@@ -4,21 +4,18 @@ from app.api import (
     auth, users, companies, products, quotations, 
     price_tables, exports, version_control, backup
 )
-from app.core.logger import SystemLogger
 import os
 
 app = FastAPI(title="Quotation System API")
 
-# 시스템 로거 초기화
-logger = SystemLogger(
-    es_url=os.getenv("ELASTICSEARCH_URL"),
-    log_file="logs/quotation_system.log"
-)
-
 # CORS 설정
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=[
+        "http://localhost:3000",
+        "https://quotation-system-frontend.vercel.app",
+        "https://quotation-system-53dr.vercel.app"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

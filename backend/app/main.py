@@ -6,6 +6,9 @@ from app.core.config import Settings
 import sys
 import traceback
 
+# 라우터 import
+from app.api import auth, users, companies, products, quotations, price_tables, exports, version_control, backup
+
 # 로깅 설정
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("quotation-api")
